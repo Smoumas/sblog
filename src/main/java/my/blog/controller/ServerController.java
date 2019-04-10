@@ -13,6 +13,11 @@ import java.io.PrintWriter;
 @Controller
 public class ServerController {
 
+    /**
+     * 让编辑框的图片正常显示
+     * @param request
+     * @param response
+     */
     @RequestMapping("/config")
     public void config(HttpServletRequest request, HttpServletResponse response){
         response.setContentType("application/json");
