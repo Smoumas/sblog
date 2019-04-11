@@ -12,8 +12,13 @@
         <textarea name="content" id="content"></textarea>
         <input type="submit" value="SUBMIT"/>
     </form>
+    <button onclick="setContent()">设置内容</button>
 </body>
 <script type="text/javascript">
     UE.getEditor('content');
+    function setContent(){
+        content = '<p>123</p><p><img src="/ueditor/jsp/pic/20190411/1554971809457073340.png" title="1554971809457073340.png" alt="QQ图片20190410161042.png"/></p><p>中文测试</p>';
+        UE.getEditor('content').setContent(content);
+    }
 </script>
 </html>

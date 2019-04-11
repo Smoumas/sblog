@@ -31,7 +31,7 @@ public class UEditorController {
      * @return
      */
     @RequestMapping(value = "/upload",method = RequestMethod.POST)
-    public String content(@RequestParam String content){
+    public String saveBlog(@RequestParam String content){
         //ClassUtils和ResourceUtils获取路径有什么不同
         String resourcePath = ClassUtils.getDefaultClassLoader().getResource("").getPath();
         String  ID = "1";
@@ -50,6 +50,14 @@ public class UEditorController {
             e.printStackTrace();
         }
         System.out.println(content);
+        return "success";
+    }
+
+    //使用数据库的方式，将页面内容保存至数据库中，编辑时直接从数据库中获取。避免要从HTML文件中获取数据
+
+    @RequestMapping(value = "/edit",method = RequestMethod.GET)
+    public String editBlog(@RequestParam String content){
+
         return "success";
     }
 }
