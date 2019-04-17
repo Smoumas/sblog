@@ -45,7 +45,7 @@
               </span>
 
 
-                <form class="am-form tpl-form-line-form" action="/user/signup" method="POST" ><!--onsubmit="return flagCheck()"-->
+                <form class="am-form tpl-form-line-form" action="/user/signup" method="POST" onsubmit="return flagCheck()"> <!--onsubmit="return flagCheck()"-->
                     <div class="am-form-group">
                         <input type="email" class="tpl-form-input" id="email" name="email" placeholder="邮箱">
 
@@ -59,11 +59,11 @@
                         <input type="password" class="tpl-form-input" id="password" name="password" placeholder="请输入密码">
                     </div>
 
-                    <!--
+
                     <div class="am-form-group">
-                        <input type="password" class="tpl-form-input" id="passwordAgain" name="passwordAgain" placeholder="再次输入密码">
+                        <input type="password" class="tpl-form-input" id="passwordAgain" name="passwordAgain" placeholder="再次输入密码" onblur="check()">
                     </div>
-                    -->
+
 
                     <!-- onblur="check()"-->
 
@@ -84,7 +84,7 @@
 
                     <div class="am-form-group">
 
-                        <input type="submit" class="am-btn am-btn-primary  am-btn-block tpl-btn-bg-color-success  tpl-login-btn"/>
+                        <input type="submit" class="am-btn am-btn-primary  am-btn-block tpl-btn-bg-color-success  tpl-login-btn" onclick="sha()"/>
 
                     </div>
                 </form>
@@ -93,6 +93,7 @@
     </div>
     <script src="../static/assets2/js/amazeui.min.js"></script>
     <script src="../static/assets2/js/app.js"></script>
+    <script src="../static/assets2/js/sha256.js"></script>
     <script type="text/javascript">
         var flag = false;
         function flagCheck(){
@@ -106,6 +107,13 @@
                 flag = false;
             }
             flag = true;
+        }
+        function sha(){
+            alert("sha");
+            var password = document.getElementById("password").value;
+            password = sha256_digest(password);
+            document.getElementById("password").value = password;
+            document.getElementById("passwordAgain").value = password;
         }
     </script>
 </body>
