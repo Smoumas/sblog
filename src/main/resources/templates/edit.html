@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="/ueditor/ueditor.config.js"></script>
+    <script src="/ueditor/ueditor.all.min.js"></script>
+    <script src="/ueditor/lang/zh-cn/zh-cn.js"></script>
+</head>
+<body>
+    <form action="/editor/upload" method="post">
+        <textarea name="content" id="content" th:text="${blog.content}"></textarea>
+        <input type="submit" value="SUBMIT"/>
+    </form>
+</body>
+<script type="text/javascript">
+    UE.getEditor('content');
+</script>
+</html>
