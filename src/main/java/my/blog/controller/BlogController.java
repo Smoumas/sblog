@@ -62,6 +62,7 @@ public class BlogController {
     public String getBlogByID(@PathVariable int ID,Model model){
         Blog blog = blogService.getBlogByID(ID);
         model.addAttribute("blog",blog);
-        return "blog";
+        return "article";
     }
+
 }

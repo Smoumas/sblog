@@ -10,18 +10,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="renderer" content="webkit">
     <meta http-equiv="Cache-Control" content="no-siteapp" />
-    <link rel="icon" type="image/png" href="../static/assets2/i/favicon.png">
-    <link rel="apple-touch-icon-precomposed" href="../static/assets2/i/app-icon72x72@2x.png">
+    <link rel="icon" type="image/png" href="assets2/i/favicon.png">
+    <link rel="apple-touch-icon-precomposed" href="assets2/i/app-icon72x72@2x.png">
     <meta name="apple-mobile-web-app-title" content="Amaze UI" />
-    <link rel="stylesheet" href="../static/assets2/css/amazeui.min.css" />
-    <link rel="stylesheet" href="../static/assets2/css/amazeui.datatables.min.css" />
-    <link rel="stylesheet" href="../static/assets2/css/app.css">
-    <script src="../static/assets2/js/jquery.min.js"></script>
+    <link rel="stylesheet" href="assets2/css/amazeui.min.css" />
+    <link rel="stylesheet" href="assets2/css/amazeui.datatables.min.css" />
+    <link rel="stylesheet" href="assets2/css/app.css">
+    <script src="assets2/js/jquery.min.js"></script>
 
 </head>
 
 <body data-type="login">
-    <script src="../static/assets2/js/theme.js"></script>
+    <script src="assets2/js/theme.js"></script>
     <div class="am-g tpl-g">
         <!-- 风格切换 -->
         <div class="tpl-skiner">
@@ -91,9 +91,9 @@
             </div>
         </div>
     </div>
-    <script src="../static/assets2/js/amazeui.min.js"></script>
-    <script src="../static/assets2/js/app.js"></script>
-    <script src="../static/assets2/js/sha256.js"></script>
+    <script src="assets2/js/amazeui.min.js"></script>
+    <script src="assets2/js/app.js"></script>
+    <script src="assets2/js/sha256.js"></script>
     <script type="text/javascript">
         var flag = false;
         function flagCheck(){
@@ -109,10 +109,10 @@
             flag = true;
         }
         function sha(){
-            alert("sha");
             var password = document.getElementById("password").value;
             password = sha256_digest(password);
             document.getElementById("password").value = password;
+            document.getElementById("passwordAgain").value = password;
         }
     </script>
 </body>

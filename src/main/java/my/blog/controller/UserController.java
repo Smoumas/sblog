@@ -23,4 +23,13 @@ public class UserController {
         }
     }
 
+    @RequestMapping("/login")
+    public String login(User user){
+        int result = userService.userLogin(user);
+        if(result == 0 ){
+            return "success";
+        }else{
+            return "error";
+        }
+    }
 }

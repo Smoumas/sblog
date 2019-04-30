@@ -17,6 +17,13 @@ public class UserService {
         return userMapper.getUsers();
     }
 
+    /**
+     *
+     * @param user
+     * @return
+     * 0 注册成功
+     * 1 注册失败
+     */
     public int insertUser(User user){
         User existUser = userMapper.getUserByUsername(user.getUsername());
         if (existUser == null) {
@@ -25,6 +32,25 @@ public class UserService {
         }else{
             return 1;
         }
+    }
+
+
+    /**
+     *
+     * @param user
+     * @return
+     * 0 登录成功
+     * 1 登录失败
+     */
+    public int userLogin(User user){
+        User existUser = userMapper.getUserByUsername(user.getUsername());
+        if(existUser == null){
+            return 1;
+        }
+        if(existUser.getPassword().equals(user.getPassword())){
+            return 0;
+        }
+        return 1;
     }
 
     public User getUserByUsername(String username){

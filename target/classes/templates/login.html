@@ -10,18 +10,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="renderer" content="webkit">
     <meta http-equiv="Cache-Control" content="no-siteapp" />
-    <link rel="icon" type="image/png" href="../static/assets2/i/favicon.png">
-    <link rel="apple-touch-icon-precomposed" href="../static/assets2/i/app-icon72x72@2x.png">
+    <link rel="icon" type="image/png" href="assets2/i/favicon.png">
+    <link rel="apple-touch-icon-precomposed" href="assets2/i/app-icon72x72@2x.png">
     <meta name="apple-mobile-web-app-title" content="Amaze UI" />
-    <link rel="stylesheet" href="../static/assets2/css/amazeui.min.css" />
-    <link rel="stylesheet" href="../static/assets2/css/amazeui.datatables.min.css" />
-    <link rel="stylesheet" href="../static/assets2/css/app.css">
-    <script src="../static/assets2/js/jquery.min.js"></script>
+    <link rel="stylesheet" href="assets2/css/amazeui.min.css" />
+    <link rel="stylesheet" href="assets2/css/amazeui.datatables.min.css" />
+    <link rel="stylesheet" href="assets2/css/app.css">
+    <script src="assets2/js/jquery.min.js"></script>
 
 </head>
 
 <body data-type="login">
-    <script src="../static/assets2/js/theme.js"></script>
+    <script src="assets2/js/theme.js"></script>
     <div class="am-g tpl-g">
         <!-- 风格切换 -->
         <div class="tpl-skiner">
@@ -46,15 +46,15 @@
 
 
 
-                <form class="am-form tpl-form-line-form">
+                <form class="am-form tpl-form-line-form" action="/user/login" method="POST">
                     <div class="am-form-group">
-                        <input type="text" class="tpl-form-input" id="user-name" placeholder="请输入账号">
-
+                        <input type="text" class="tpl-form-input" id="username" name = "username" placeholder="请输入账号">
+                        <span id="usernameError" name="usernameError" style="color: red"></span>
                     </div>
 
                     <div class="am-form-group">
-                        <input type="password" class="tpl-form-input" id="user-name" placeholder="请输入密码">
-
+                        <input type="password" class="tpl-form-input" id="password" name="password" placeholder="请输入密码">
+                        <span id="passwordError" name="passowordError" style="color: red"></span>
                     </div>
                     <div class="am-form-group tpl-login-remember-me">
                         <input id="remember-me" type="checkbox">
@@ -72,16 +72,51 @@
 
                     <div class="am-form-group">
 
-                        <button type="button" class="am-btn am-btn-primary  am-btn-block tpl-btn-bg-color-success  tpl-login-btn">提交</button>
+                        <input type="submit" class="am-btn am-btn-primary  am-btn-block tpl-btn-bg-color-success  tpl-login-btn" onclick="sha()"/>
 
                     </div>
                 </form>
             </div>
         </div>
     </div>
-    <script src="../static/assets2/js/amazeui.min.js"></script>
-    <script src="../static/assets2/js/app.js"></script>
+    <script src="assets2/js/amazeui.min.js"></script>
+    <script src="assets2/js/app.js"></script>
+    <script src="assets2/js/sha256.js"></script>
+    <script type="text/javascript">
+        var username = document.getElementById("username");
+        var password = document.getElementById("password");
+        var usernameError = document.getElementById("usernameError");
+        var passwordError = document.getElementById("passwordError");
+        var usernameNotnull = false;
+        var passwordNotnull = false;
+        username.onblur = function usernameCheckNull(){
+            var str = username.value.replace(/(^\s*)|(\s*$)/g, '');
+            if (str == '' || str == undefined || str == null){
+                usernameError.innerText = "用户名不能为空";
+            }else{
 
+            }
+        }
+
+
+        password.onblur = function passwordCheckNull(){
+            var str = username.value.replace(/(^\s*)|(\s*$)/g, '');
+            if (str == '' || str == undefined || str == null){
+                passwordError.innerText = "密码不能为空";
+            }else{
+
+            }
+        }
+
+        function sha(){
+            var password = document.getElementById("password").value;
+            password = sha256_digest(password);
+            document.getElementById("password").value = password;
+            document.getElementById("passwordAgain").value = password;
+        }
+
+
+    </script>
 </body>
 
 </html>
