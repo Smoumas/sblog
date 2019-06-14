@@ -15,4 +15,11 @@ public class PageController {
     public String login(){
         return "login";
     }
+
+
+    @RequestMapping("/form")
+    public String form(){
+        return "form";
+    }
+
 }
