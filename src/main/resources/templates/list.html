@@ -130,7 +130,7 @@
             <div class="am-u-lg-6 am-u-md-12 am-u-sm-12 blog-entry-text">
                 <span><a href="" class="blog-color">article&nbsp;</a></span>
                 <span th:utext="${#dates.format(blog.createTime,'yyyy-MM-dd')}"></span>
-                <h1><a th:href="@{'../blog/'+ ${blog.ID}}" th:text="${blog.title}"></a></h1>
+                <h1><a th:href="@{'/blog/'+ ${blog.ID}}" th:text="${blog.title}"></a></h1>
                 <!--
                 <p th:utext="${blog.content}">
                 </p>

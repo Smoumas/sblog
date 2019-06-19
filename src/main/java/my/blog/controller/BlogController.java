@@ -17,7 +17,6 @@ import java.util.Map;
 
 
 @Controller
-@RequestMapping("/blogs")
 public class BlogController {
 
     @Autowired
@@ -32,7 +31,7 @@ public class BlogController {
      * @param model
      * @return
      */
-    @RequestMapping("/{uid}")
+    @RequestMapping("/blogs/{uid}")
     public String listBlogs(@PathVariable int uid,Model model){
 //        String resourcePath = ClassUtils.getDefaultClassLoader().getResource("").getPath();
 //        File file = new File(resourcePath+"static/blogs/"+ID);
