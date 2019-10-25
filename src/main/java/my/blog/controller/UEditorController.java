@@ -48,7 +48,6 @@ public class UEditorController {
         //blog.setContent(content);
 //        System.out.println(blog.getTitle());
 //        System.out.println(blog.getContent());
-
         blogService.insertBlog(blog);
 //        File file = new File(resourcePath+"/templates/blogs/"+ID);
 //        if (!file.exists()){

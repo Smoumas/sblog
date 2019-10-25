@@ -48,15 +48,16 @@ public class BlogController {
         return "list";
     }
 
-    @RequestMapping("/uid/{uid}")
-    public String getAllBlog(@PathVariable int uid){
-        List<Blog> blogList = blogService.getAllBlogs(uid);
-        for(Blog blog:blogList){
-            System.out.println(blog.getID()+":"+blog.getUid()+":"+blog.getContent());
-        }
-        return "success";
-    }
+//    @RequestMapping("/uid/{uid}")
+//    public String getAllBlog(@PathVariable int uid){
+//        List<Blog> blogList = blogService.getAllBlogs(uid);
+//        for(Blog blog:blogList){
+//            System.out.println(blog.getID()+":"+blog.getUid()+":"+blog.getContent());
+//        }
+//        return "success";
+//    }
 
+    //获取单个blog
     @RequestMapping("/blog/{ID}")
     public String getBlogByID(@PathVariable int ID,Model model){
         Blog blog = blogService.getBlogByID(ID);

@@ -34,7 +34,7 @@ public class PageController {
 
     @RequestMapping("/")
     public String index(Model model, HttpServletResponse response){
-        List<Blog> blogList = blogService.getAllBlogs(1);
+        List<Blog> blogList = blogService.getAllBlogs(1);   //ID需要修改
         model.addAttribute("list",blogList);
         return "list";
     }
