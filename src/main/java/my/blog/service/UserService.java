@@ -42,15 +42,15 @@ public class UserService {
      * 0 登录成功
      * 1 登录失败
      */
-    public int userLogin(User user){
+    public User userLogin(User user){
         User existUser = userMapper.getUserByUsername(user.getUsername());
         if(existUser == null){
-            return 1;
+            return null;
         }
         if(existUser.getPassword().equals(user.getPassword())){
-            return 0;
+            return existUser;
         }
-        return 1;
+        return null;
     }
 
     public User getUserByUsername(String username){

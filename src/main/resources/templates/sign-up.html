@@ -58,28 +58,28 @@
     <h1 class="log-title am-animation-slide-top" style="color: #0e90d2">注册用户</h1>
 
     <br>
-    <form class="am-form" id="log-form">
+    <form class="am-form" id="log-form" action="/user/signup" method="POST">
       <div class="am-input-group am-radius am-animation-slide-left">
-        <input type="text" id="doc-vld-username-2-1" class="am-radius" data-validation-message="请输入用户名" placeholder="用户名" required/>
+        <input type="text" id="doc-vld-username-2-1" name="username" class="am-radius" data-validation-message="请输入用户名" placeholder="用户名" required/>
         <span class="am-input-group-label log-icon am-radius"><i class="am-icon-user am-icon-sm am-icon-fw"></i></span>
       </div>
       <br>
       <div class="am-input-group am-radius am-animation-slide-left">       
-        <input type="email" id="doc-vld-email-2-1" class="am-radius" data-validation-message="请输入正确邮箱地址" placeholder="邮箱" required/>
+        <input type="email" id="doc-vld-email-2-1" name="email" class="am-radius" data-validation-message="请输入正确邮箱地址" placeholder="邮箱" required/>
         <span class="am-input-group-label log-icon am-radius"><i class="am-icon-user am-icon-sm am-icon-fw"></i></span>
       </div>
       <br>
       <div class="am-input-group am-animation-slide-left log-animation-delay">       
-        <input type="password" id="log-password" class="am-form-field am-radius log-input" placeholder="密码" minlength="11" required>
+        <input type="password" id="log-password" name="password" class="am-form-field am-radius log-input" placeholder="密码" minlength="6" required>
         <span class="am-input-group-label log-icon am-radius"><i class="am-icon-lock am-icon-sm am-icon-fw"></i></span>
       </div>
       <br>   
       <div class="am-input-group am-animation-slide-left log-animation-delay-a">       
-        <input type="password" data-equal-to="#log-password" class="am-form-field am-radius log-input" placeholder="确认密码" data-validation-message="请确认密码一致" required>
+        <input type="password" id="log-password-again" data-equal-to="#log-password" class="am-form-field am-radius log-input" placeholder="确认密码" data-validation-message="请确认密码一致" required>
         <span class="am-input-group-label log-icon am-radius"><i class="am-icon-lock am-icon-sm am-icon-fw"></i></span>
       </div>
       <br>
-      <button type="submit" class="am-btn am-btn-primary am-btn-block am-btn-lg am-radius am-animation-slide-bottom log-animation-delay-b">注 册</button>
+      <input type="submit" class="am-btn am-btn-primary am-btn-block am-btn-lg am-radius am-animation-slide-bottom log-animation-delay-b" onclick="sha()">注 册</input>
       <br>
       <!--
       <div class="am-btn-group am-animation-slide-bottom log-animation-delay-b">
@@ -113,5 +113,27 @@
 <![endif]-->
 <script src="../../assets3/js/amazeui.min.js"></script>
 <script src="../../assets3/js/app.js"></script>
+<script src="assets2/js/sha256.js"></script>
+<script type="text/javascript">
+    var flag = false;
+    function flagCheck(){
+        return flag;
+    }
+    // function check(){
+    //     var password = document.getElementById("password").value;
+    //     var passwordAgain = document.getElementById("passwordAgain").value;
+    //     if(password != passwordAgain){
+    //         alert("两次输入的密码不一致.");
+    //         flag = false;
+    //     }
+    //     flag = true;
+    // }
+    function sha(){
+        var password = document.getElementById("log-password").value;
+        password = sha256_digest(password);
+        document.getElementById("log-password").value = password;
+        document.getElementById("log-password-again").value = password;
+    }
+</script>
 </body>
 </html>
