@@ -39,8 +39,7 @@ public class UserService {
      *
      * @param user
      * @return
-     * 0 登录成功
-     * 1 登录失败
+     *
      */
     public User userLogin(User user){
         User existUser = userMapper.getUserByUsername(user.getUsername());

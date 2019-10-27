@@ -21,8 +21,8 @@ public class UserController {
     @Autowired
     private BlogService blogService;
 
-    @RequestMapping("/signup")
-    public String signup(User user){
+    @RequestMapping("/signUp")
+    public String signUp(User user){
         int result = userService.insertUser(user);
         if(result == 0) {
             return "success";
@@ -32,12 +32,10 @@ public class UserController {
     }
 
     @RequestMapping("/login")
-    public String login(User user, Model model){
+    public String login(User user){
         User existUser = userService.userLogin(user);
         if(existUser != null ){
-            List<Blog> blogList = blogService.getAllBlogs(existUser.getId());
-            model.addAttribute("list",blogList);
-            return "list";
+            return "redirect:/blogs/"+existUser.getId();
         }else{
             return "error";
         }
