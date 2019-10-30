@@ -25,7 +25,8 @@ public class UserController {
     public String signUp(User user){
         int result = userService.insertUser(user);
         if(result == 0) {
-            return "success";
+            User existUser = userService.getUserByUsername(user.getUsername());
+            return "redirect:/blogs/"+existUser.getId();
         }else{
             return "error";
         }
