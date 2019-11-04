@@ -136,8 +136,12 @@
                 <p th:utext="${blog.content}">
                 </p>
                 -->
-                    <li class="am-pagination-next"><a href="">编辑测试</a></li>
-                    <li class="am-pagination-next"><a href="">删除测试</a></li>
+                    <li class="am-pagination-next" th:if="${session.ID > 0}">
+                        <a th:href="@{'/editor/edit/' + ${blog.ID}}">编辑测试</a>
+                    </li>
+                    <li class="am-pagination-next" th:if="${session.ID > 0}">
+                        <a th:href="@{'/editor/delete/' + ${blog.ID}}">删除测试</a>
+                    </li>
                 </ul>
             </div>
         </article>

@@ -28,4 +28,9 @@ public class BlogService {
     public void deleteBlog(int ID){
         blogMapper.deleteBlog(ID);
     }
+
+    public void updateBlog(Blog blog){
+        blogMapper.updateBlog(blog);
+    }
+
 }

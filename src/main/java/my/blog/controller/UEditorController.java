@@ -13,9 +13,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.io.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 @Controller
 @RequestMapping("/editor")
@@ -39,32 +41,25 @@ public class UEditorController {
      * @return
      */
     @RequestMapping(value = "/upload",method = RequestMethod.POST)
-    public String saveBlog(Blog blog){
+    public String saveBlog(Blog blog, HttpSession session){
         //ClassUtils和ResourceUtils获取路径有什么不同
 //        String resourcePath = ClassUtils.getDefaultClassLoader().getResource("").getPath();
-        int uid = 1;
+        int uid = (int)session.getAttribute("ID");
         blog.setUid(uid);
         blog.setCreateTime(new Date());
-        //blog.setContent(content);
-//        System.out.println(blog.getTitle());
-//        System.out.println(blog.getContent());
         blogService.insertBlog(blog);
-//        File file = new File(resourcePath+"/templates/blogs/"+ID);
-//        if (!file.exists()){
-//            file.mkdir();
-//        }
-//        Date date = new Date();
-//        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
-//        String fileName = simpleDateFormat.format(date);
-//        try{
-//                BufferedWriter blogHTML = new BufferedWriter(new FileWriter(resourcePath+"/static/blogs/"+ID+"/"+fileName+".html"));
-//                blogHTML.write(content);
-//                blogHTML.close();
-//        }catch (Exception e){
-//            e.printStackTrace();
-//        }
         return "success";
     }
+
+    @RequestMapping(value = "/update/{ID}",method = RequestMethod.POST)
+    public String updateBlog(@PathVariable int ID , Blog blog,Model model){
+        blog.setID(ID);
+        blog.setCreateTime(new Date());
+        blogService.updateBlog(blog);
+        model.addAttribute("blog",blog);
+        return "redirect:/blog/"+ID;
+    }
+
 
     //编辑功能，从数据库中获取对应blog，并填充到textarea中
     @RequestMapping(value = "/edit/{ID}")
@@ -76,8 +71,12 @@ public class UEditorController {
 
     //删除功能，根据ID删除blog
     @RequestMapping(value = "/delete/{ID}")
-    public String deleteBlog(@PathVariable int ID){
+    public String deleteBlog(@PathVariable int ID,Model model){
+        Blog blog = blogService.getBlogByID(ID);
+        int uid = blog.getUid();
         blogService.deleteBlog(ID);
-        return "success";
+        List<Blog> blogList = blogService.getAllBlogs(uid);
+        model.addAttribute("list",blogList);
+        return "list";
     }
 }

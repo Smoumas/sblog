@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
@@ -33,9 +34,10 @@ public class UserController {
     }
 
     @RequestMapping("/login")
-    public String login(User user){
+    public String login(User user, HttpSession session){
         User existUser = userService.userLogin(user);
         if(existUser != null ){
+            session.setAttribute("ID",existUser.getId());
             return "redirect:/blogs/"+existUser.getId();
         }else{
             return "error";

@@ -22,4 +22,7 @@ public interface BlogMapper {
 
     @Delete("DELETE FROM blogs WHERE id = #{id}")
     void deleteBlog(int ID);
+
+    @Update("UPDATE blogs SET content=#{content},createTime=#{createTime},title=#{title} WHERE id=#{ID}")
+    void updateBlog(Blog blog);
 }

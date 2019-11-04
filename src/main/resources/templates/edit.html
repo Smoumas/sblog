@@ -8,7 +8,9 @@
     <script src="/ueditor/lang/zh-cn/zh-cn.js"></script>
 </head>
 <body>
-    <form action="/editor/upload" method="post">
+    <form th:action="@{'/editor/update/'+ ${blog.ID}}" method="post">
+        文章标题：<input type="text" name="title" id ="title" th:attr="value=${blog.title}"/>
+        <br/><br/><br/>
         <textarea name="content" id="content" th:text="${blog.content}"></textarea>
         <input type="submit" value="SUBMIT"/>
     </form>
