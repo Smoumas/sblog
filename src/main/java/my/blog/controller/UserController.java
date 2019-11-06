@@ -44,4 +44,15 @@ public class UserController {
             return "error";
         }
     }
+
+    @RequestMapping("/logout")
+    public String loginOut(HttpSession session){
+        if(session.getAttribute("ID") != null){
+            session.removeAttribute("ID");
+        }
+        if(session.getAttribute("name") != null){
+            session.removeAttribute("name");
+        }
+        return "redirect:/blogs/1";
+    }
 }
