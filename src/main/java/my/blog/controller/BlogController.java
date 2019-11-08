@@ -46,7 +46,15 @@ public class BlogController {
 //        }
 
         //使用PageHelper进行分页
-        PageHelper.startPage(1,2);
+        PageHelper.startPage(1,20);
+        Page<Blog> blogList = blogService.getAllBlogs(uid);
+        model.addAttribute("list",blogList);
+        return "list";
+    }
+
+    @RequestMapping("/blogs/{uid}/{page}")
+    public String listBlogsByPage(@PathVariable("uid") int uid,@PathVariable("page")int page,Model model){
+        PageHelper.startPage(page,20);
         Page<Blog> blogList = blogService.getAllBlogs(uid);
         model.addAttribute("list",blogList);
         return "list";
