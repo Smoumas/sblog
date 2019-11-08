@@ -1,5 +1,6 @@
 package my.blog.service;
 
+import com.github.pagehelper.Page;
 import my.blog.domain.Blog;
 import my.blog.mapper.BlogMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +14,7 @@ public class BlogService {
     @Autowired
     private BlogMapper blogMapper;
 
-    public List<Blog> getAllBlogs(int uid){
+    public Page<Blog> getAllBlogs(int uid){
         return blogMapper.getAllBlogs(uid);
     }
 

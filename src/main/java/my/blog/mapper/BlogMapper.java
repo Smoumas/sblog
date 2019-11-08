@@ -1,5 +1,6 @@
 package my.blog.mapper;
 
+import com.github.pagehelper.Page;
 import my.blog.domain.Blog;
 import org.apache.ibatis.annotations.*;
 import org.mybatis.spring.annotation.MapperScan;
@@ -9,9 +10,9 @@ import java.util.List;
 @Mapper
 public interface BlogMapper {
 
-    @Select("SELECT * FROM blogs WHERE uid = #{uid} ORDER BY createTime DESC")
+    @Select("SELECT * FROM blogs WHERE uid = #{uid} ORDER BY id DESC")
     @Results({@Result(property = "ID", column = "id"),@Result(property = "uid", column = "uid"),@Result(property = "content",column = "content")})
-    List<Blog> getAllBlogs(int uid);
+    Page<Blog> getAllBlogs(int uid);
 
     @Insert("INSERT INTO blogs(uid,content,title,createTime) VALUES(#{uid},#{content},#{title},#{createTime})")
     void insertBlog(Blog blog);

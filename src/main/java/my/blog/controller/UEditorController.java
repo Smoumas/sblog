@@ -48,7 +48,7 @@ public class UEditorController {
         blog.setUid(uid);
         blog.setCreateTime(new Date());
         blogService.insertBlog(blog);
-        return "success";
+        return "redirect:/blogs/"+uid;
     }
 
     @RequestMapping(value = "/update/{ID}",method = RequestMethod.POST)

@@ -1,5 +1,7 @@
 package my.blog.controller;
 
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 import my.blog.config.ServerConfig;
 import my.blog.domain.Blog;
 import my.blog.service.BlogService;
@@ -43,7 +45,9 @@ public class BlogController {
 //            fileMap.put(fileName,filePath);
 //        }
 
-        List<Blog> blogList = blogService.getAllBlogs(uid);
+        //使用PageHelper进行分页
+        PageHelper.startPage(1,2);
+        Page<Blog> blogList = blogService.getAllBlogs(uid);
         model.addAttribute("list",blogList);
         return "list";
     }
