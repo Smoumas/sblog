@@ -39,6 +39,7 @@ public class UserController {
         if(existUser != null ){
             session.setAttribute("ID",existUser.getId());
             session.setAttribute("name",existUser.getUsername());
+            session.setAttribute("page",1);
             return "redirect:/blogs/"+existUser.getId();
         }else{
             return "error";

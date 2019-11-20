@@ -145,8 +145,8 @@
 
         
         <ul class="am-pagination">
-  <li class="am-pagination-prev"><a href="">&laquo; Prev</a></li>
-  <li class="am-pagination-next"><a href="">Next &raquo;</a></li>
+  <li class="am-pagination-prev"><a th:href="@{'/blogs/'+ ${session.ID} + '/'+ ${session.page - 1}}">&laquo; Prev</a></li>
+  <li class="am-pagination-next"><a th:href="@{'/blogs/'+ ${session.ID} + '/'+ ${session.page + 1}}">Next &raquo;</a></li>
 </ul>
     </div>
 
