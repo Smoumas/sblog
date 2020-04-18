@@ -1,5 +1,8 @@
 package my.blog.controller;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import my.blog.aspect.anno.SysLogAnno;
 import my.blog.domain.Blog;
 import my.blog.domain.User;
 import my.blog.service.BlogService;
@@ -31,8 +34,10 @@ public class UserController {
         }else{
             return "error";
         }
+
     }
 
+    @SysLogAnno("test")
     @RequestMapping("/login")
     public String login(User user, HttpSession session){
         User existUser = userService.userLogin(user);
